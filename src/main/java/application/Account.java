@@ -6,7 +6,7 @@ public class Account {
 	String lastName;
 	int accountNumber;
 	
-	Account(String first, String second, int accountNo)
+	public Account(String first, String second, int accountNo)
 	{
 		this.firstName =  first; 
 		this.lastName = second;
@@ -14,7 +14,6 @@ public class Account {
 	}
 	Account ()
 	{
-		
 	}
 	public String getFirstName() {
 		return firstName;
