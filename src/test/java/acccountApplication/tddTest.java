@@ -15,23 +15,32 @@ public class tddTest {
 	public void setup() {
 		Service thisService = new Service();
 		Account account1 = new Account("Manish", "Seth", 2);
-		Account account2 = new Account("Manish", "Seth", 2);
-		Account account3 = new Account("Abz", "Shell", 4);
-		Account account4 = new Account("Alan", "Sugar", 5);
 
 	}
 
 	@Test
-	public void test() {
+	public void testByCount() {
 		Service thisService = new Service();
 		Account account1 = new Account("Manish", "Seth", 2);
-		Account account2 = new Account("Manish", "Seth", 2);
-		Account account3 = new Account("Abz", "Shell", 4);
-		Account account4 = new Account("Alan", "Sugar", 5);
+		Account account2 = new Account("Manish", "Man", 1);
 		
-		thisService.add_user(account3);
-		assertEquals(1, thisService.countName("Abz"));
+		thisService.add_user(account1);
+		thisService.add_user(account2);
+		assertEquals(2, thisService.countName("Manish"));
+
 	}
+	
+	@Test
+	public void testByStream() {
+		Service thisService = new Service();
+		Account account1 = new Account("Manish", "Seth", 2);
+		Account account2 = new Account("Manish", "man", 1);
+		
+		thisService.add_user(account1);
+		thisService.add_user(account2);
+		assertEquals(2, thisService.countNameByStream("Manish"));
+	}
+	
 
 	@After
 	public void teardown() {

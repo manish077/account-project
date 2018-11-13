@@ -28,11 +28,9 @@ public class Service {
 			};
 			Map<String, Account> map = mapper.readValue(jsonCon, new_String);
 			System.out.println(map.toString());
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 	
 	public void add_user(Account name1) {
@@ -48,6 +46,11 @@ public class Service {
 			}
 		}
 		return counter;
+	}
+	
+	public int countNameByStream(String FName) {
+		return (int) reqdMap.values().stream().filter(account -> account.getFirstName().equals(FName)).count();
+
 
 	}
 
