@@ -11,28 +11,15 @@ public class Service {
 
 	Account account = new Account("Manish", "kru", 2);
 	ObjectMapper mapper = new ObjectMapper();
-	int count =0;
+	int count = 0;
 
 	HashMap<Integer, Account> reqdMap = new HashMap<Integer, Account>();
 
-	public void addUser(String FirstName, String SecondName, int id) {
-
-		reqdMap.put(id, new Account(account.getFirstName(), account.getLastName(), account.getAccountNumber()));
-		System.out.println(reqdMap.values());
-
-		try {
-			String jsonCon = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(reqdMap);
-			System.out.println(jsonCon);
-
-			TypeReference<HashMap<String, Account>> new_String = new TypeReference<HashMap<String, Account>>() {
-			};
-			Map<String, Account> map = mapper.readValue(jsonCon, new_String);
-			System.out.println(map.toString());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public static void main(String[] args) {
+		Service service = new Service();
+		service.hashToJson();
 	}
-	
+
 	public void add_user(Account name1) {
 		this.reqdMap.put(count, name1);
 		count++;
@@ -47,11 +34,29 @@ public class Service {
 		}
 		return counter;
 	}
-	
+
 	public int countNameByStream(String FName) {
 		return (int) reqdMap.values().stream().filter(account -> account.getFirstName().equals(FName)).count();
+	}
 
+	public void hashToJson() {
 
+		HashMap<Integer, Account> reqdMap = new HashMap<Integer, Account>();
+
+		reqdMap.put(1, new Account(account.getFirstName(), account.getLastName(), account.getAccountNumber()));
+		System.out.println(reqdMap.values());
+
+		try {
+			String jsonCon = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(reqdMap);
+			System.out.println(jsonCon);
+
+			TypeReference<HashMap<String, Account>> new_String = new TypeReference<HashMap<String, Account>>() {
+			};
+			Map<String, Account> map = mapper.readValue(jsonCon, new_String);
+			System.out.println(map.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

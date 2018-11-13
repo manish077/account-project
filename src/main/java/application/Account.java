@@ -14,7 +14,6 @@ public class Account {
 	}
 	Account ()
 	{
-		
 	}
 	public String getFirstName() {
 		return firstName;
