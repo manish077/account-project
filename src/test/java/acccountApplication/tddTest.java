@@ -10,7 +10,7 @@ import application.Account;
 import application.Service;
 
 public class tddTest {
-	
+
 	@Before
 	public void setup() {
 		Service thisService = new Service();
@@ -18,8 +18,7 @@ public class tddTest {
 		Account account2 = new Account("Manish", "Seth", 2);
 		Account account3 = new Account("Abz", "Shell", 4);
 		Account account4 = new Account("Alan", "Sugar", 5);
-		
-		
+
 	}
 
 	@Test
@@ -29,12 +28,14 @@ public class tddTest {
 		Account account2 = new Account("Manish", "Seth", 2);
 		Account account3 = new Account("Abz", "Shell", 4);
 		Account account4 = new Account("Alan", "Sugar", 5);
-        assertEquals(2,thisService.countName("Manish"));
+		
+		thisService.add_user(account3);
+		assertEquals(1, thisService.countName("Abz"));
 	}
-	
+
 	@After
 	public void teardown() {
-		
+
 	}
 
 }

@@ -9,8 +9,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Service {
 
-	Account account = new Account("jon", "kru", 2);
+	Account account = new Account("Manish", "kru", 2);
 	ObjectMapper mapper = new ObjectMapper();
+	int count =0;
 
 	HashMap<Integer, Account> reqdMap = new HashMap<Integer, Account>();
 
@@ -31,9 +32,23 @@ public class Service {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
+
 	}
 	
+	public void add_user(Account name1) {
+		this.reqdMap.put(count, name1);
+		count++;
+	}
 
+	public int countName(String FName) {
+		int counter = 0;
+		for (Account check : reqdMap.values()) {
+			if (check.getFirstName().equals(FName)) {
+				counter++;
+			}
+		}
+		return counter;
+
+	}
 
 }
